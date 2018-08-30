@@ -11,17 +11,20 @@ const mountNode = document.getElementById('app');
 
 
 setInterval( () => {
-	ReactDOM.render(<h1>${counter++}</h1>, mountNode);
+	ReactDOM.render(<h1>{counter++}</h1>, mountNode);
 
-}, 1000)*/
+}, 1000)
+*/
+//----------------------------------------------
 
-	
 /*const HelloWorld = (props) => {
 	console.log('props', props);
 	return <h1>Hello world {props.userName}</h1>
 }
 
 ReactDOM.render(<HelloWorld userName="Easycode student"/>, mountNode)*/
+
+//-------------------------------------------------
 
 let list = ['Vue', 'Angular', 'React'];
 const frameworks = list.map((item, i) => {

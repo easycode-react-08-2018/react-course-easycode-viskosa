@@ -1,41 +1,99 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import {users} from "./components/users.js";
+import '../styl/index.styl';
 
-const mountNode = document.getElementById('app');
+const mountNode = document.getElementById("app");
 
-/*ReactDOM.render(<h1>Hello world</h1>, mountNode);*/
+const UserTableHeader = (props) => {
+	return (
+		<div className="panel-heading">
+			<h3 className="panel-title">{props.data}</h3>
+		</div>
+	);
+};
 
-/*Напишите счетчик, который будет каждую секунду обновляться в ДОМ при помощи реакт и реактДОМ*/
+const UserTableAvatar = (props) => {
+	return (
+		<div className="col-md-3 col-lg-3 " align="center">
+          <img src="{props.data}" className="pull-left"/>
+        </div>
+	);
+};
 
-/*let counter = 0;
-
-
-setInterval( () => {
-	ReactDOM.render(<h1>${counter++}</h1>, mountNode);
-
-}, 1000)*/
-
-	
-/*const HelloWorld = (props) => {
-	console.log('props', props);
-	return <h1>Hello world {props.userName}</h1>
-}
-
-ReactDOM.render(<HelloWorld userName="Easycode student"/>, mountNode)*/
-
-let list = ['Vue', 'Angular', 'React'];
-const frameworks = list.map((item, i) => {
-	return <li key={i}>{item}</li>
-});
-
-const ShowFrameworks = () => {
+const UserTableBody = (props) => {
 
 	return (
-		<ul>
-			{frameworks}
-		</ul>
-		)
-	
+				<table className="table table-user-information">
+  		           <tbody>
+  		             <tr>
+  		               <td>Дата рождения</td>
+  		               <td>{props.data.birthdate}</td>
+  		             </tr>
+  		             <tr>
+  		               <td>Пол</td>
+  		               <td>{props.data.gender}</td>
+  		             </tr>
+  		             <tr>
+  		               <td>Адрес</td>
+  		               <td>{props.data.address}</td>
+  		             </tr>
+  		             <tr>
+  		               <td>Email</td>
+  		               <td><a href='#'>{props.data.email}</a></td>
+  		             </tr>
+  		           </tbody>
+  		      	</table>   
+			)
+};
+
+const RenderTable = (props) => {
+
+	const main =  props.data.users.map ((item, i) => {
+
+		let {avatarUrl, fullName, ...rest} = item;
+
+		return (
+				<div key = {i}>
+				
+					<UserTableHeader data = {item.fullName}/>
+
+					<div className="panel-body">
+					   <div className="row">
+
+						   	<div>
+						   		<UserTableAvatar data = {item.avatarUrl}/>
+
+								<div className="col-md-9 col-lg-9">
+									<UserTableBody data = {item}/>
+								</div>
+
+							</div>	
+
+						</div>
+					</div>
+
+				</div>
+			)
+
+	})
+
+	return main;
+};
+
+const RenderHTML = (props) => {
+	return (
+		<div className="panel panel-info">
+
+			<RenderTable data = {props}/>
+
+			<div className= "btn-wrapper">
+				<button className = "btn-copy">Copy it!</button>
+			</div>
+
+		</div>
+	)
+
 }
 
-ReactDOM.render(<ShowFrameworks/>, mountNode)
+ReactDOM.render(<RenderHTML users={users} />, mountNode);
