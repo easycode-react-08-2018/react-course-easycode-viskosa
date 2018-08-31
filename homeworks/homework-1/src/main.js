@@ -1,9 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {users} from "./components/users.js";
+import 'bootstrap/dist/css/bootstrap.css';
 import '../styl/index.styl';
+require('webpack-icons-installer/bootstrap');  //load only bootstrap glyphicons
+
 
 const mountNode = document.getElementById("app");
+
+/*const clickHandle = (event) => {
+	let target = event.target;
+
+	if (target.classList.contains('btn-copy')) {
+			console.log(target);
+	}
+}*/
 
 const UserTableHeader = (props) => {
 	return (
@@ -16,10 +27,18 @@ const UserTableHeader = (props) => {
 const UserTableAvatar = (props) => {
 	return (
 		<div className="col-md-3 col-lg-3 " align="center">
-          <img src="{props.data}" className="pull-left"/>
+          <img src={props.data} className="pull-left"/>
         </div>
 	);
 };
+
+const Button = () => {
+	return (
+		<div className= "btn-wrapper">
+			<button className = "btn-copy">Copy it!</button>
+		</div>
+	)
+}
 
 const UserTableBody = (props) => {
 
@@ -86,10 +105,7 @@ const RenderHTML = (props) => {
 		<div className="panel panel-info">
 
 			<RenderTable data = {props}/>
-
-			<div className= "btn-wrapper">
-				<button className = "btn-copy">Copy it!</button>
-			</div>
+			<Button /*onClick={clickHandle}*/ />
 
 		</div>
 	)

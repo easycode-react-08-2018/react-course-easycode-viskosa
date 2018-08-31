@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /*JSX -> Babel -> React*/
 
@@ -16,44 +16,46 @@ module.exports = {
 		rules: [
 			{
 				test: /.js$/,
+				exclude: /node_modules/,
 				loader: 'babel-loader',
 				query: {
 					compact: false
 				}				
 			},
 			{
-		        test: /\.styl$/,
-		        use: ExtractTextPlugin.extract({
-		            use: [
-		              { 
-		                loader: "css-loader",
-		                options: { 
-		                  minimize: true
-		                }
-		              },
-		              {
-		                loader: 'postcss-loader',
-		                options: {
-		                    plugins: [
-		                        autoprefixer({
-		                            browsers:['ie >= 8', 'last 4 version']
-		                        })
-		                    ],
-		                    sourceMap: false
-		                }
-		              },
-		              'stylus-loader'
-		            ]
-		        })
+		        test: /\.(sa|sc|c)ss$/,
+		        use: [
+						MiniCssExtractPlugin.loader,
+		        		'css-loader', // The css-loader interprets @import and url() like import/require() and will resolve them.
+		        		//'postcss-loader', //Add vendor prefixes to CSS rules using values from Can I Use. 
+		        		'sass-loader'
+		        	],
+		    },    
+			{
+		        test: /\.styl$/,// /\.(sa|sc|c)ss$/,
+		        use: [
+						MiniCssExtractPlugin.loader,
+			        	'css-loader',//The css-loader interprets @import and url() like import/require() and will resolve them.
+			        	//'postcss-loader',//Add vendor prefixes to CSS rules using values from Can I Use. 
+			        	'stylus-loader'
+		        	],
 		    },
+		    {
+		        test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, // for glyphicons
+		        loader: 'url-loader',
+		        options: {
+		           limit: 8192,
+		           name:'[name].[ext]',
+		           outputPath:'assets' //the icons will be stored in dist/assets folder
+		        }
+		    }
 
 		]
 	},
 
 	plugins: [
-	    new ExtractTextPlugin({
+	    new MiniCssExtractPlugin({
 	        filename: 'bundle.css',
-	        allChunks: true
     	}),
     ]
 }
