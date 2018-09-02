@@ -3,11 +3,11 @@ import {OneItemBlockCart} from '../components/one-item-block-cart.js';
 
 export class ShoppingCart extends Component {
 	render() {
-		const {logout, buyItem, shipIt} = this.props;
+		const {logout, shipIt} = this.props;
 
-		let itemsArray = this.props.items.map((item, i) => {
-	      return <OneItemBlockCart key={i} value={item} buyItem={buyItem}/>
-	    });
+      let itemsArray = this.props.willBePurchased.map((item, i) => {
+        return <OneItemBlockCart key={i} value={item} />
+      });
 
 		return (
 		<div className="container">
@@ -15,33 +15,6 @@ export class ShoppingCart extends Component {
             <div className="col-8">
               <h1>Shopping Cart</h1>
               <ul className="list-group">
-
-                <li className="list-group-item">
-                  <img src="#" alt=""/>
-                  <a href="#" className="admin-orders__link">
-                    MacBook Pro 2018
-                  </a>
-                  <button className="float-right badge-light"
-                  		  onClick={buyItem}>✓</button>
-                </li>
-
-                <li className="list-group-item">
-                  <img src="#" alt=""/>
-                  <a href="#" className="admin-orders__link">
-                    Dell xs
-                  </a>
-                  <button className="float-right badge-light"
-                  		  onClick={buyItem}>✓</button>
-                </li>
-
-                <li className="list-group-item">
-                  <img src="#" alt=""/>
-                  <a href="#" className="admin-orders__link">
-                    Microsoft Surface
-                  </a>
-                  <button className="float-right badge-light"
-                  		  onClick={buyItem}>✓</button>
-                </li>
 
                 {itemsArray}
 

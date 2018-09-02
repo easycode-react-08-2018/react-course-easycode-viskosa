@@ -15,8 +15,9 @@ class App extends Component {
       inputValue: '', 
       newItems: [],
       willBePurchased: [],
-      isTicked: false,
-      isButton: true
+      //isTicked: false,
+      //isButton: true
+
     }
 
   }
@@ -50,19 +51,23 @@ class App extends Component {
     this.state.newItems.push(this.state.inputValue);
     this.setState({inputValue: ''});
   }
-
+/*
   buyItemFromCart = (event) => {
     let item = event.target.previousElementSibling.textContent;
     this.state.willBePurchased.push(item);
     alert(item + ' was added to the cart');
     console.log(this.state.willBePurchased);
-  }
+  }*/
 
-  buyItemFromUserPage = () => { //сразу все отмечаются галочками, это неправильно
-    this.setState({
+  buyItemFromUserPage = (event) => { //сразу все отмечаются галочками, это неправильно
+    /*this.setState({
       isTicked: true,
       isButton: false
-    })
+    })*/
+    let item = event.target.previousElementSibling.textContent;
+    this.state.willBePurchased.push(item);
+    alert(item + ' was added to the cart');
+    console.log(this.state.willBePurchased);
   }
 
   inputChange = (event) => { 
@@ -109,8 +114,8 @@ class App extends Component {
     if (this.state.activePage === 'shoppingCartPage') {
       return <ShoppingCart 
       logout = {this.changePageToHomePage}
-      items = {this.state.newItems} 
-      buyItem = {this.buyItemFromCart}
+      willBePurchased = {this.state.willBePurchased} 
+      //buyItem = {this.buyItemFromCart}
       shipIt = {this.shipIt}
       />
     };
