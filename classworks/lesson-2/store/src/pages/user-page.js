@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {OneItemBlockUserPage} from './one-item-block-user-page.js';
-import {SuccessTemplate} from './success-template.js';
-import {PlainButton} from './plain-button.js';
+import {OneItemBlockUserPage} from '../components/one-item-block-user-page.js';
+import {SuccessTemplate} from '../components/success-template.js';
+import {PlainButton} from '../components/plain-button.js';
 
 export class UserPage extends Component {
 	render() {

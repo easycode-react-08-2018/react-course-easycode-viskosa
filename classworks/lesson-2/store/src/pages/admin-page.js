@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {OneItemBlock} from './one-item-block.js';
+import {OneItemBlock} from '../components/one-item-block.js';
 
 
 export class AdminPage extends Component {

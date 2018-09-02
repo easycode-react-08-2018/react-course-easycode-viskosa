@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {OneItemBlockCart} from './one-item-block-cart.js';
+import {OneItemBlockCart} from '../components/one-item-block-cart.js';
 
 export class ShoppingCart extends Component {
 	render() {

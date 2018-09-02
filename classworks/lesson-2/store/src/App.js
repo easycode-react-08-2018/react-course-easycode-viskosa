@@ -43,7 +43,10 @@ class App extends Component {
     }) 
   }
 
-  addItem = () => {    
+  addItem = () => {  
+    if (!this.state.inputValue) {
+      return;
+    };
     this.state.newItems.push(this.state.inputValue);
     this.setState({inputValue: ''});
   }
@@ -51,7 +54,7 @@ class App extends Component {
   buyItemFromCart = (event) => {
     let item = event.target.previousElementSibling.textContent;
     this.state.willBePurchased.push(item);
-    console.log('added to the cart');
+    alert(item + ' was added to the cart');
     console.log(this.state.willBePurchased);
   }
 
