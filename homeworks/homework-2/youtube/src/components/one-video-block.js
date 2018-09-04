@@ -2,19 +2,22 @@ import React, { Component } from "react";
 
 export class OneVideoBlock extends Component {
     render() {
+        const { id, snippet } = this.props.videoData;
+        const { videoId } = id;
+        const { title, thumbnails } = snippet;
         return (
-            <li class="list-group-item">
-                <div class="video-list media">
-                    <div class="video-list media">
-                        <div class="media-left">
+            <li className="list-group-item">
+                <div className="video-list media">
+                    <div className="video-list media">
+                        <div className="media-left">
                             <img
-                                class="media-object"
-                                src="https://randomuser.me/api/portraits/thumb/men/7.jpg"
+                                className="media-object"
+                                src={thumbnails.default.url}
                             />
                         </div>
                     </div>
-                    <div class="media-body">
-                        <div class="media-heading">SOME VIDEO</div>
+                    <div className="media-body">
+                        <div className="media-heading">{title}</div>
                     </div>
                 </div>
             </li>
