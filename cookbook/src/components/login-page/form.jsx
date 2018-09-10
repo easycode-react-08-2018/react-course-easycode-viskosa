@@ -17,7 +17,7 @@ export class Form extends Component {
 							<input
 								id="username"
 								type="text"
-								name="email"
+								name="username"
 								placeholder="Enter User Name"
 								className="cb-input"
 								/*onInput={inputChangeUser}*/

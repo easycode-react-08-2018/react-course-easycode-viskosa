@@ -23,6 +23,10 @@
   flex-direction: column;
 }
 
+ .relative {
+  position: relative;
+ }
+
 .cb__wrapper {
   width: 86%;
   display: flex;
@@ -114,7 +118,7 @@
   margin-right: 20px
 }
 
-.cb-recepts__wrapper {
+.cb-recepts__items-wrapper {
   border: 1px solid grey;
   padding: 20px;
 }
@@ -125,6 +129,10 @@
   padding: 20px;
 }
 
+.cb-item__img {
+  max-width: 100%;
+}
+
 .cb-item__resume-part {
   align-items: flex-end;
 }
@@ -132,4 +140,64 @@
 .cb-item__img-part, .cb-item__ingridients-part,
 .cb-item__resume-part, .cb-item__buttons-part {
   width: 22%;
+  padding: 0 10px;
+}
+
+/*edit recept page*/
+.cb-card__wrapper {
+  border: 2px solid lightblue;
+}
+
+.cb-card__wrapper {
+  padding: 10px;
+} 
+
+.cb-card__img-part {
+  width: 25%;
+  border: 1px solid lightblue;
+}
+
+.cb-card__button--remove {
+  margin-left: 15px;
+}
+
+.cb-card__text-part {
+  width: 70%;
+  border: 1px solid lightblue;
+  padding: 10px;
+}
+
+.cb-card__input-name {
+  margin-left: 15px;
+}
+
+.cb-card__ingridients-wrapper {
+  border: 1px solid grey;
+  height: 200px;
+  width: 180px;
+}
+
+.cb-card-ingridient-item {
+  padding: 5px;
+  border-bottom: 1px solid grey;
+  margin: 0;
+  color: DarkTurquoise;
+}
+
+.cb-card-ingridient-item span {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  background: grey;
+  border-radius: 50%;
+  color: white;
+  width: 25px;
+  height: 20px;
+  text-align: center
+}
+
+.cb-card__button--left {
+  margin-bottom: 10px;
 }

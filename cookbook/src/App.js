@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="cb__wrapper">
-          <ReceptsPage />
+          <EditReceptPage />
         </div> 
       </div>
     );

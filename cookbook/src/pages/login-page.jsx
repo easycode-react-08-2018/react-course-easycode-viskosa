@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Header } from '../components/header.jsx'
-import { Form } from '../components/form.jsx'
+import { Header } from '../components/common/header.jsx'
+import { Form } from '../components/login-page/form.jsx'
 
 export class LoginPage extends Component {
   render() {

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Header } from '../components/header.jsx'
-import { Form } from '../components/form.jsx'
+import { Header } from '../components/common/header.jsx'
+import { EditReceptContent } from '../components/edit-recept-page/edit-recept-content.jsx'
 
-export class LoginPage extends Component {
+export class EditReceptPage extends Component {
   render() {
     return (
       <React.Fragment>
         <Header />
-        <Form />
+        <EditReceptContent />
       </React.Fragment>
     );
   }

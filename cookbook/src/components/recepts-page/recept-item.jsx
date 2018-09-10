@@ -5,7 +5,7 @@ export class ReceptItem extends Component {
     return (
 			<div className="cb-recepts__item fl fl-justify-b">
 				<div className="cb-item__img-part">
-					<img src="" alt="img" />
+					<img className="cb-item__img" src="" alt="img" />
 				</div>
 
 				<div className="cb-item__ingridients-part">
