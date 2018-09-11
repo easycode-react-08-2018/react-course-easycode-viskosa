@@ -8,7 +8,7 @@ export class ReceptCard extends Component {
 	    <div className="cb-card__wrapper fl fl-justify-b">
 		    <div className="cb-card__img-part fl fl-dir-col">
 		    	<div className="cb-card__img-wrapper">
-		    		<img src="../../img/svinaya_rulka.jpg" className="cb-item__img"/>
+		    		<img src="../../img/svinaya_rulka.jpg" alt="" className="cb-item__img"/>
 		    	</div>
 		    	<div className="cb-card__buttons-wrap">
 		    		<button className="cb-button cb-card__button--add">Загрузить</button>
