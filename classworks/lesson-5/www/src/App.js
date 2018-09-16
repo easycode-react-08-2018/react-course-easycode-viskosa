@@ -1,57 +1,63 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux' // чтобы приконнектить стор, который у нас в index.js
 import {increment} from './actions/increment.js'
 import {decrement} from './actions/decrement.js'
 import {incrementPlus} from './actions/incrementPlus'
 
 export class App extends Component {
-  state={
+  state = {
     inputValue: '',
-    xxx: 0
+    //xxx: ''
   };
 
   updateInput = (event) => {
-    const {name, value} = event.target;
-    console.log(name, value)
+    const { name, value } = event.target;
     this.setState({
-      //[name]: +value
       inputValue: value
+      //[name]: +value
     })
   }
 
-  clearInputs() {
-    this.setState({inputValue: ''})
+  clearInput() {
+    this.setState({
+      inputValue: ''
+    })
   }
 
-  render() {
-    //console.log(props)
-    const { increment, decrement, counter,incrementPlus } = this.props;
-    const { inputValue, xxx } = this.state;
+  render() {  //в this.props пришло то, что передали в хок connect
+    console.log(this.props);// {myCounter: 0, myRedux: "is a power", increment: ƒ, decrement: ƒ, incrementPlus: ƒ}
+    const { increment, decrement, myCounter, incrementPlus } = this.props;
+    const { inputValue } = this.state;
     return (
       <div className="App">
-        <button 
-        onClick = {increment}>INCREMENT</button>
-
-        <p>counter: {counter}</p>
-
+        {/*<button onClick = {this.props.dispatch({ type: 'INCREMENT'})}>INCREMENT</button>*/}{/*это антипаттерн, так не делают*/}
+        <button onClick = { () => {
+            increment(+inputValue);
+            this.clearInput();
+          }}>INCREMENT</button>
+        <p>myCounter: {myCounter}</p>
         <button onClick={decrement}>DECREMENT</button>
-        <input type="text" name="xxx" onChange={this.updateInput} value={inputValue } />
-        <button onClick={
-          () => {
-            incrementPlus(+inputValue)
+        <input type="text" onChange={this.updateInput} value={inputValue } name="xxx"/>
+        <button onClick={ () => {
+            incrementPlus(+inputValue);
+            this.clearInput();
           }     
         }>Add</button>
       </div>
     );
   }
-}
-const mapStateToProps = (state) => {
-  //console.log(state);
-  return {
-    counter: state.counter,
-    redux: 'is a power'
+} // end of class App
+
+//-------------------------------------------------------------------
+const mapStateToProps = (state) => { // эту ф-цию передадим в сonnect, он сделает хок и в пропсы Аппа попадут
+                                    // те свойства, которые возвращает mapStateToProps (объект свойств)
+                                    // Здесь мы можем видеть state, потому что его присоединил connect
+  console.log(state);          // {counter: 0}, пришел из index.js, это initialState. 
+  return {                    // тут вернем то, что попадает в пропсы Аппа
+    myCounter: state.counter, // и назовем так, как будем использовать в Аппе
+    myRedux: 'is a power'
   }
 }
 
@@ -73,4 +79,14 @@ const mapDispatchToProps = {
   incrementPlus
 }
 
-export const AppWithStore = connect(mapStateToProps, mapDispatchToProps)(App);//передает стейт в пропс
+export const AppWithStore = connect(mapStateToProps, mapDispatchToProps)(App);//это HOC, передает стейт в пропс
+// connect - это НОС, который принимает еще переменные. В зависимости от того, что в него придет, 
+// то же придет и в Апп. 
+
+// хотим из index.js в пропсы Аппа передать например константу initialState = {counter: 0}, 
+// она передается в первых скобочках в connect (в хоке). Если не передать, то в Апп в пропсах ничего не придет
+// connect умеет доставать стейт из mapStateToProps и передавать его в Апп
+// каждый компонент работает со стейтом через коннект
+// коннектов м.б. миллион. Там, где что-то нужно сделать со стейтом - достать его или обновить - используем коннект
+
+// вместо mapDispatchToProps в хок вторым параметром можно передать объект { increment, decrement, incrementPlus }
