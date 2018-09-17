@@ -2,15 +2,15 @@ import { ADD_SERVER } from '../../actions/';//по умолчанию будет
 // а тот индекс смотрит на индекс в папке servers-actions
 //import { ADD_SERVER } from '../../actions/servers-actions/add-server';// так лучше, так явно видно что откуда
 
-// все стейты пишутся в редьюсреах!!!
-const initialState = { // тут сущность одного сервера
+// все стейты пишутся в редьюсреах!!!// тут сущность одного сервера
+const initialState = [
 	{
 		name: 'Server #1',
 	},
 	{
 		name: 'Server #2',
 	},
-};
+];
 
 
 export const serversReducer = (state = [], action) => {
