@@ -9,6 +9,7 @@ import { reducer } from './reducer';
 const middleware = store => next => action => {
 	console.log('PREV STATE: ', store.getState())
 	console.log('action', action);
+	console.log('CURRENT STATE:', store.getState())
 	next(action);
 }
 
