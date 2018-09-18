@@ -13,10 +13,13 @@ const initialState = [
 ];
 
 
-export const serversReducer = (state = [], action) => {
+export const serversReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_SERVER: {
 			return [...state, action.payload.server];
 		}
+		default: {		//обязательно дефолтный стейт
+			return state 
+		}	
 	}
 }

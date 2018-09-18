@@ -18,9 +18,10 @@ export class ServerComponent extends React.Component {
 	}
 	render() {
 		const { isInEditMode } = this.state;
+		const { name } = this.props;
 		return (
 				<div className="server__item">
-					<TextEditor className="server__item-title" value="Server #1" isInEditMode={isInEditMode}/>
+					<TextEditor className="server__item-title" value={name} isInEditMode={isInEditMode}/>
 					<button className="server__item-edit" onClick={this.toggleEditMode}>Edit server</button>	
 				</div>
 			)
