@@ -1,7 +1,67 @@
 import React, { Component } from "react";
 import {
 	Link,
-	BrowserRouter,
+	Route,
+	Switch,
+	withRouter
+} from "react-router-dom";
+import "./App.css";
+import { Header } from "./components/common/header.jsx";
+import { LoginPage } from "./pages/login-page/login-page.jsx";
+import { RecipesPage } from "./pages/recipes-page/recipes-page.jsx";
+import { EditRecipePage } from "./pages/edit-recipe-page/edit-recipe-page.jsx";
+//import { SignUpButton } from "./components/common/sign-up-button.jsx";
+//import { SignOutButton } from "./components/common/sign-out-button.jsx";
+
+class App extends Component {
+	constructor() {
+		super();
+
+		this.state = {
+			//inputValueEmail: "",
+			//inputValueConfirmPassword: "",		
+			//inputValuePassword: "",
+			//inputValueUser: "",
+			activeUser: "",
+			//errorMsg: "",
+			//secret: ''
+		};
+	}
+
+
+	logOut = () => {
+		this.setState({
+			activeUser: "",
+			errorMsg: ""
+		});
+	};
+
+	render() {
+		const { activeUser } = this.state;
+		return (
+
+				<div className="App">
+					<div className="cb__wrapper">
+						<Header/>
+						<Switch>
+							<Route exact path="/" component={props => (<LoginPage {...props}/>)}/>//так делаем, чтобы работало history
+							<Route exact path="/recepts" component={RecipesPage} />
+							<Route path="/recepts/:id" component={EditRecipePage} />
+						</Switch>
+					</div>
+				</div>
+
+		);
+	}
+}
+
+export default App;
+
+
+//-------------------------------------------------
+/*import React, { Component } from "react";
+import {
+	Link,
 	Route,
 	Switch,
 	withRouter
@@ -102,7 +162,8 @@ class App extends Component {
 	};
 
 	historyHandler = () => {
-		this.props.history.push("recepts"); // не работает, как правильно?????????????????????
+		console.log('props from historyHandler', this.props);
+		//this.props.history.push("/recepts"); // не работает, как правильно?????????????????????
 	};
 
 	logOut = () => {
@@ -115,7 +176,7 @@ class App extends Component {
 	render() {
 		const { activeUser, errorMsg, inputValuePassword, inputValueUser } = this.state;
 		return (
-			<BrowserRouter>
+
 				<div className="App">
 					<div className="cb__wrapper">
 						<Header
@@ -123,7 +184,7 @@ class App extends Component {
 							button={activeUser ? ( <SignOutButton logout={this.logOut} /> ) : ( <SignUpButton /> ) }
 						/>
 						<Switch>
-							<Route path="/" component={props => (
+							<Route exact path="/" component={props => (
 									<LoginPage
 										{...props}
 										logIn={this.logIn}
@@ -134,16 +195,15 @@ class App extends Component {
 										passwordValue={inputValuePassword}
 									/>
 								)}
-								exact
 							/>
-							<Route path="/recepts" component={ReceptsPage} exact />
+							<Route exact path="/recepts" component={ReceptsPage} />
 							<Route path="/recepts/:id" component={EditReceptPage} />
 						</Switch>
 					</div>
 				</div>
-			</BrowserRouter>
+
 		);
 	}
 }
 
-export default App;
+export default App;*/

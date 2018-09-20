@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class ReceptItem extends Component {
+export class RecipeItem extends Component {
   render() {
     return (
 			<div className="cb-recepts__item fl fl-justify-b">

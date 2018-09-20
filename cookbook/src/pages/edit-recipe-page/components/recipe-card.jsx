@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 //import {image} from '../../img/svinaya_rulka.jpg';
-import { IngridientItem } from './ingridient-item.jsx'
+import { IngredientItem } from './ingredient-item.jsx'
 
-export class ReceptCard extends Component {
+export class RecipeCard extends Component {
   render() {
     return (
 	    <div className="cb-card__wrapper fl fl-justify-b">
@@ -37,9 +37,9 @@ export class ReceptCard extends Component {
 		    	<div className="cd-card__ingridients-part fl fl-justify-b">
 		    		<p>Список ингридиентов</p>
 		    		<div className="cb-card__ingridients-wrapper cb-card__ingridients-wrapper--all">
-		    			<IngridientItem />
-						<IngridientItem />
-						<IngridientItem />
+		    			<IngredientItem />
+						<IngredientItem />
+						<IngredientItem />
 		    		</div>
 
 		    		<div className="cb-card-ingridient-buttons-wrap fl fl-dir-col fl-justify-c">
@@ -48,9 +48,9 @@ export class ReceptCard extends Component {
 		    		</div>
 
 		    		<div className="cb-card__ingridients-wrapper cb-card__ingridients-wrapper--selected">
-		    			<IngridientItem />
-						<IngridientItem />
-						<IngridientItem />
+		    			<IngredientItem />
+						<IngredientItem />
+						<IngredientItem />
 		    		</div>		    		
 		    	</div>
 		    </div>

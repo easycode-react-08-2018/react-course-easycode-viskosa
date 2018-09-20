@@ -98,6 +98,10 @@
   padding-top: 30px;
 }
 
+.cb-form__label {
+  margin-right: 10px;
+}
+
 .cb-form__checkbox {
   margin-left: 30px;
 }

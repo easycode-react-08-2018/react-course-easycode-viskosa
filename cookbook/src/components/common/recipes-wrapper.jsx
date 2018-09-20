@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class ReceptsWrapper extends Component {
+export class RecipesWrapper extends Component {
   render() {
     return (
         <div className="cb-recepts__content-wrapper fl fl-dir-col">

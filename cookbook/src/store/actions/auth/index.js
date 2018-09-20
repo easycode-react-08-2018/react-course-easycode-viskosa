@@ -1,0 +1,1 @@
+export * from './auth.action';//экспортировали все из auth.js
