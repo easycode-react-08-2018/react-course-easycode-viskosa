@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
 
-    this.state = {
+/*    this.state = {
       activeUser: '',
     };
   }
@@ -21,11 +21,11 @@ class App extends Component {
     this.setState({
       activeUser: '',
       errorMsg: '',
-    });
-  };
+    });*/
+  }
 
   render() {
-    const {activeUser} = this.state;
+    //const {activeUser} = this.state;
     return (
       <div className="App">
         <div className="cb__wrapper">

@@ -1,14 +1,23 @@
-import React, {Component} from 'react';
-import logo from '../../logo.svg';
-import {SignUpButton} from './sign-up-button.jsx';
-import {SignOutButton} from './sign-out-button.jsx';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import logo from "../../logo.svg";
+import { SignUpButton } from "./sign-up-button.jsx";
+import { SignOutButton } from "./sign-out-button.jsx";
+import { connect } from "react-redux";
 
 export class HeaderComponent extends Component {
   render() {
-    console.log('props from header', this.props);
-    const {login, button} = this.props;
-    //const button = this.props.username && <button className="cb-main-text cb-button">Sign-out</button>
+    console.log("props from header", this.props);
+    const { login } = this.props;
+
+    const chooseButton = () => {
+      if (login) {
+        return <SignOutButton />;
+      }
+
+      return <SignUpButton />;
+    };
+    const button = chooseButton();
+
     return (
       <header className="cb-header fl fl-justify-b fl-align-c">
         <div className="cb__header-user">
@@ -27,11 +36,11 @@ export class HeaderComponent extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log('from headers mapStateToProps', state);
+const mapStateToProps = state => {
+  console.log("from headers mapStateToProps", state);
   return {
-    //login: state.authReducer.login,
-    somethingHeader: 'smth',
+    login: state.authReducer.login.login,
+    somethingHeader: "smth"
   };
 };
 

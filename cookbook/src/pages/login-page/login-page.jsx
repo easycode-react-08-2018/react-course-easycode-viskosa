@@ -13,7 +13,6 @@ export class LoginPageComponent extends Component {
     };
   }
   putUserInGlobalState = (user) => {
-    console.error('@@@@@@@@@@@@@@@@@@');
     this.props.doAuth({
       login: user,
     });
