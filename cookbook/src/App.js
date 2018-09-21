@@ -1,62 +1,52 @@
-import React, { Component } from "react";
-import {
-	Link,
-	Route,
-	Switch,
-	withRouter
-} from "react-router-dom";
-import "./App.css";
-import { Header } from "./components/common/header.jsx";
-import { LoginPage } from "./pages/login-page/login-page.jsx";
-import { RecipesPage } from "./pages/recipes-page/recipes-page.jsx";
-import { EditRecipePage } from "./pages/edit-recipe-page/edit-recipe-page.jsx";
+import React, {Component} from 'react';
+import {Link, Route, Switch, withRouter} from 'react-router-dom';
+import './App.css';
+import {Header} from './components/common/header.jsx';
+import {LoginPage} from './pages/login-page/login-page.jsx';
+import {RecipesPage} from './pages/recipes-page/recipes-page.jsx';
+import {EditRecipePage} from './pages/edit-recipe-page/edit-recipe-page.jsx';
 //import { SignUpButton } from "./components/common/sign-up-button.jsx";
 //import { SignOutButton } from "./components/common/sign-out-button.jsx";
 
 class App extends Component {
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.state = {
-			//inputValueEmail: "",
-			//inputValueConfirmPassword: "",		
-			//inputValuePassword: "",
-			//inputValueUser: "",
-			activeUser: "",
-			//errorMsg: "",
-			//secret: ''
-		};
-	}
+    this.state = {
+      activeUser: '',
+    };
+  }
 
+  logOut = () => {
+    this.setState({
+      activeUser: '',
+      errorMsg: '',
+    });
+  };
 
-	logOut = () => {
-		this.setState({
-			activeUser: "",
-			errorMsg: ""
-		});
-	};
-
-	render() {
-		const { activeUser } = this.state;
-		return (
-
-				<div className="App">
-					<div className="cb__wrapper">
-						<Header/>
-						<Switch>
-							<Route exact path="/" component={props => (<LoginPage {...props}/>)}/>//так делаем, чтобы работало history
-							<Route exact path="/recepts" component={RecipesPage} />
-							<Route path="/recepts/:id" component={EditRecipePage} />
-						</Switch>
-					</div>
-				</div>
-
-		);
-	}
+  render() {
+    const {activeUser} = this.state;
+    return (
+      <div className="App">
+        <div className="cb__wrapper">
+          <Header />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={(props) => <LoginPage {...props} />}
+            />
+            //так делаем, чтобы работало history
+            <Route exact path="/recepts" component={RecipesPage} />
+            <Route path="/recepts/:id" component={EditRecipePage} />
+          </Switch>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
-
 
 //-------------------------------------------------
 /*import React, { Component } from "react";
