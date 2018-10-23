@@ -1,0 +1,13 @@
+{
+  "prettier": {
+    "arrowParens": "always",
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "jsxBracketSameLine": true
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "koa": "^2.5.3",
+    "koa-route": "^3.2.0"
+  }
+}
